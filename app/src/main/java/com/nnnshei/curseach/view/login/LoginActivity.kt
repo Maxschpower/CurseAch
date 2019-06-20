@@ -7,6 +7,9 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.nnnshei.curseach.R
 import com.nnnshei.curseach.presentation.login.LoginPresenter
 import com.nnnshei.curseach.presentation.login.LoginView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
@@ -20,5 +23,6 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        
     }
 }
