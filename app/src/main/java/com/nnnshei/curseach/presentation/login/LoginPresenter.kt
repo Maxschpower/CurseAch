@@ -3,13 +3,17 @@ package com.nnnshei.curseach.presentation.login
 import com.arellomobile.mvp.InjectViewState
 import com.nnnshei.curseach.IAppPreferences
 import com.nnnshei.curseach.Screens
+import com.nnnshei.curseach.model.service.Api
 import com.nnnshei.curseach.presentation.BasePresenter
+import com.nnnshei.curseach.util.ISchedulers
 import ru.terrakok.cicerone.Router
 
 @InjectViewState
 class LoginPresenter(
     private val router: Router,
-    private val preferences: IAppPreferences
+    private val preferences: IAppPreferences,
+    private val api: Api,
+    private val scheduler: ISchedulers
 ) : BasePresenter<LoginView>() {
 
     override fun onFirstViewAttach() {
@@ -19,8 +23,14 @@ class LoginPresenter(
     }
 
     fun onLoginClicked(nick: String) {
-        preferences.nickname = nick
-        router.newRootScreen(Screens.Main)
+        api.createUser(nick)
+            .observeOn(scheduler.ui())
+            .subscribeOn(scheduler.io())
+            .subscribe {
+                preferences.nickname = nick
+                router.newRootScreen(Screens.Main)
+            }
+            .untilDestroy()
     }
 
 }

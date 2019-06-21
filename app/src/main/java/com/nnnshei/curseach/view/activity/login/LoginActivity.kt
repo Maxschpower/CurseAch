@@ -49,7 +49,7 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
             }
         })
         btn_enter.setOnClickListener {
-            presenter.onLoginClicked(text_input_nickname.toString())
+            presenter.onLoginClicked(text_input_nickname.text.toString())
         }
     }
 

@@ -2,16 +2,17 @@ package com.nnnshei.curseach.presentation
 
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
-import kotlinx.coroutines.Job
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
-open class BasePresenter<T : MvpView> : MvpPresenter<T>()  {
+open class BasePresenter<T : MvpView> : MvpPresenter<T>() {
 
-    private val jobsList = mutableListOf<Job>()
+    private val jobsList = CompositeDisposable()
 
-    fun Job.untilDestroy() = jobsList.add(this)
+    fun Disposable.untilDestroy() = jobsList.add(this)
 
     override fun onDestroy() {
-        jobsList.forEach { it.cancel() }
+        jobsList.clear()
         super.onDestroy()
     }
 }
