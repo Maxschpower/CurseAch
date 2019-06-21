@@ -68,15 +68,16 @@
         app:layout_constraintTop_toBottomOf="@id/text_enter_description" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/btn_enter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
+        android:enabled="false"
         android:layout_marginBottom="64dp"
         android:background="@drawable/button_background"
         android:text="Войти"
-        android:textColor="#CCFFFFFF"
+        android:textColor="#E6FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

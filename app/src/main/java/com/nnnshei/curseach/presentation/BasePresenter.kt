@@ -4,7 +4,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
 import kotlinx.coroutines.Job
 
-open class BasePresenter<View : MvpView> : MvpPresenter<View>() {
+open class BasePresenter<T : MvpView> : MvpPresenter<T>()  {
 
     private val jobsList = mutableListOf<Job>()
 
