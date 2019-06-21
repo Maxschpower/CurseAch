@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.main.MainActivity"></activity>
+        <activity android:name=".view.main.MainActivity"/>
         <activity
             android:name=".view.login.LoginActivity"
             android:label="Авторизация">
@@ -27,8 +27,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="nnshei.com"
-                    android:pathPrefix="/courseach"
+                    android:host="nnnshei.com"
+                    android:pathPrefix="/curseach"
                     android:scheme="http" />
             </intent-filter>
         </activity>
