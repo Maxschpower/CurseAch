@@ -17,7 +17,7 @@
         android:fontFamily="sans-serif-medium"
         android:maxLines="1"
         android:textColor="@android:color/black"
-        android:textSize="34sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toStartOf="@id/date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

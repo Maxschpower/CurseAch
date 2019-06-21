@@ -30,7 +30,8 @@ class RoomsPresenter(
     }
 
     fun onRoomClicked(key: String) {
-        router.navigateTo(Screens.Room(key))
+        api.currentRoom = key
+        router.navigateTo(Screens.Room)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.nnnshei.curseach.view.fragment
+package com.nnnshei.curseach.view.fragment.rooms
 
 import android.view.LayoutInflater
 import android.view.View
@@ -50,11 +50,15 @@ class RoomsAdapter(
                     clickListener(item.title.orEmpty())
                 }
                 title.text = item.title
-                sender.text = item.lastMessage?.sender + ":"
-                date.text =
-                    "${yearFormat.format(item.lastMessage?.timestamp ?: 0)}" +
-                            "\n" +
-                            "${timeFormat.format(item.lastMessage?.timestamp ?: 0)}"
+                sender.text =
+                    if (!item.lastMessage?.sender.isNullOrBlank()) item.lastMessage?.sender + ":" else ""
+                if (item.lastMessage?.timestamp != null && item.lastMessage.timestamp > 0)
+                    date.text =
+                        "${yearFormat.format(item.lastMessage?.timestamp)}" +
+                                "\n" +
+                                "${timeFormat.format(item.lastMessage?.timestamp)}"
+                else
+                    date.text = ""
                 message.text = item.lastMessage?.text
             }
         }

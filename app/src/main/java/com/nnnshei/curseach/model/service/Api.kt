@@ -9,5 +9,7 @@ interface Api {
     fun observeRooms(): Observable<List<Room>>
     fun createUser(nickname: String): Completable
     fun sendMessage(message: Message, roomKey: String): Completable
-    fun observeMessages(roomKey: Int): Observable<List<Message>>
+    fun observeMessages(roomKey: String): Observable<List<Message>>
+    var currentRoom: String
+    fun updateLastMessage(room:Room): Completable
 }

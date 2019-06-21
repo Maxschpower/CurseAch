@@ -78,8 +78,7 @@ class DbRepository(
     override fun <T : Any> updateChildren(
         tableReference: String,
         values: Map<String, T>
-    ): Completable = RxFirebaseDatabase
-        .updateChildren(firebaseDatabase.getReference("tableReference"), values)
+    ): Completable = RxFirebaseDatabase.setValue(firebaseDatabase.getReference("tableReference"), values)
 
     override fun createKey(tableReference: String): String = firebaseDatabase
         .getReference("/$tableReference/")

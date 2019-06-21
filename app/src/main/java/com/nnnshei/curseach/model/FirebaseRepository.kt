@@ -12,12 +12,14 @@ class FirebaseRepository(
     override fun observeRooms(): Observable<List<Room>> =
         database.observeRooms(IRemoteDatabase.TABLE_ROOMS)
 
-    override fun sendMessage(message: Message, roomKey: String): Completable =
-        database.setValue(
-            IRemoteDatabase.TABLE_MESSAGES,
-            database.createKey("/$roomKey" + IRemoteDatabase.TABLE_MESSAGES),
-            message
-        )
+    override fun sendMessage(message: Message, roomKey: String): Completable {
+        return database
+            .setValue(
+                IRemoteDatabase.TABLE_MESSAGES + "/" + roomKey,
+                database.createKey(IRemoteDatabase.TABLE_MESSAGES + "/" + roomKey),
+                message
+            )
+    }
 
     override fun createUser(nickname: String) =
         database.setValue(
@@ -26,10 +28,19 @@ class FirebaseRepository(
             true
         )
 
-    override fun observeMessages(roomKey: Int) =
+    override fun observeMessages(roomKey: String) =
         database.observeChildsList(
             IRemoteDatabase.TABLE_MESSAGES,
-            "$roomKey",
+            roomKey,
             Message::class.java
         )
+
+    override fun updateLastMessage(room: Room): Completable =
+        database.setValue(
+            IRemoteDatabase.TABLE_ROOMS,
+            room.title!!,
+            room
+        )
+
+    override var currentRoom: String = ""
 }

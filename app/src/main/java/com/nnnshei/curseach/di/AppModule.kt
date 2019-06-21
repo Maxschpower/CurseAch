@@ -8,6 +8,7 @@ import com.nnnshei.curseach.model.db.DbRepository
 import com.nnnshei.curseach.model.db.IRemoteDatabase
 import com.nnnshei.curseach.model.service.Api
 import com.nnnshei.curseach.presentation.login.LoginPresenter
+import com.nnnshei.curseach.presentation.room.RoomPresenter
 import com.nnnshei.curseach.presentation.rooms.RoomsPresenter
 import com.nnnshei.curseach.util.APP_SETTINGS_NAME
 import com.nnnshei.curseach.util.ISchedulers
@@ -23,7 +24,7 @@ val appModule = module {
     single { cicerone.navigatorHolder }
     single { FirebaseDatabase.getInstance() }
     factory<IRemoteDatabase> { DbRepository(get()) }
-    factory<Api> { FirebaseRepository(get()) }
+    single<Api> { FirebaseRepository(get()) }
     factory<ISchedulers> { Schedulers() }
     single<IAppPreferences> {
         AppPreferences(
@@ -35,4 +36,5 @@ val appModule = module {
     }
     factory { LoginPresenter(get(), get(), get(), get()) }
     factory { RoomsPresenter(get(), get(), get(), get()) }
+    factory { RoomPresenter(get(), get(), get(), get()) }
 }

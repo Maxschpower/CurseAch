@@ -1,9 +1,10 @@
-package com.nnnshei.curseach.view.fragment
+package com.nnnshei.curseach.view.fragment.rooms
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.MvpAppCompatFragment
@@ -41,6 +42,7 @@ class RoomsFragment : MvpAppCompatFragment(), RoomsView {
 
     override fun bindData(rooms: List<Room>) {
         adapter.bindData(rooms)
+        progress_circular.isVisible = false
     }
 
     companion object {
