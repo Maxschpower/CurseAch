@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.nnnshei.curseach.view.activity.main.MainActivity"/>
+        <activity android:name="com.nnnshei.curseach.view.activity.main.MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name="com.nnnshei.curseach.view.activity.login.LoginActivity"
-            android:label="Авторизация">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

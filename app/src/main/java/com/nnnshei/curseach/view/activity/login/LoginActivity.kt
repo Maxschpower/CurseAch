@@ -3,6 +3,7 @@ package com.nnnshei.curseach.view.activity.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.core.view.isVisible
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -49,7 +50,8 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
             }
         })
         btn_enter.setOnClickListener {
-            presenter.onLoginClicked(text_input_nickname.toString())
+            progress_circular.isVisible = true
+            presenter.onLoginClicked(text_input_nickname.text.toString())
         }
     }
 
